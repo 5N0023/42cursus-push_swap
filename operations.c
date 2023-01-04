@@ -6,8 +6,9 @@ void swap(t_list **stack)
 	t_list *tmp;
 	t_list *tmpnxt;
 
-	
 	head = *stack;
+	if (!head)
+		return ;
 	tmp = head->next;
 	if (!tmp)
 		return;
@@ -21,14 +22,23 @@ void push(t_list **a, t_list **b)
 {
 	t_list *tmpb;
 	t_list *tmp;
+	size_t	size;
+
+	size = ft_lstsize(*b);
 	tmpb = *b;
-	if(!tmpb)
-		return ;
+	if (size == 0)
+		return;
+	if (size == 1)
+	{
+		ft_lstadd_front(a,tmpb);
+		*b = NULL;
+		return;
+	}
 	*b = tmpb->next;
 	ft_lstadd_front(a,tmpb);
 }
 
-void rotate(t_list **stack)
+void rrotate(t_list **stack)
 {
 	t_list *head;
 	t_list *last;
@@ -49,12 +59,19 @@ void rotate(t_list **stack)
 	
 }
 
-void rrotate(t_list **stack)
+void rotate(t_list **stack)
 {
 	t_list *head;
 	t_list *tail;
-	if(ft_lstsize(*stack) == 2)
+	size_t	size;
+
+	size = ft_lstsize(*stack);
+	if(size == 0)
+		return ;
+	if(size == 2)
 		swap(stack);
+	else  if (size == 1)
+		return;
 	tail = ft_lstlast(*stack);
 	head = *stack;
 	*stack = head->next;

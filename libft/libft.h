@@ -6,7 +6,7 @@
 /*   By: mlektaib <mlektaib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 12:51:12 by mlektaib          #+#    #+#             */
-/*   Updated: 2022/12/03 15:36:45 by mlektaib         ###   ########.fr       */
+/*   Updated: 2023/01/04 14:54:57 by mlektaib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,12 @@
 typedef struct s_list
 {
 	int				num;
+	int				lis;
+	int				mark;
 	struct s_list	*next;
 }	t_list;
 
-int		ft_atoi(const char *str);
+long	ft_atoi(const char *str);
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t count, size_t size);
 int		ft_isalnum(int n);

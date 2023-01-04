@@ -6,7 +6,7 @@
 /*   By: mlektaib <mlektaib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 14:28:16 by mlektaib          #+#    #+#             */
-/*   Updated: 2022/12/03 16:52:05 by mlektaib         ###   ########.fr       */
+/*   Updated: 2023/01/03 19:00:11 by mlektaib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,14 @@ static int	ft_isspace(int c)
 		|| c == '\f' || c == '\r' || c == '\n');
 }
 
-int	ft_atoi(const char *str)
+long	ft_atoi(const char *str)
 {
 	size_t	res;
 	int		sign;
+	size_t	prev;
 
 	sign = 1;
+	res = 0;
 	while (ft_isspace(*str))
 		str++;
 	if (*str == '-' || *str == '+')
@@ -34,8 +36,13 @@ int	ft_atoi(const char *str)
 	}
 	while (ft_isdigit(*str))
 	{
+		prev = res;
 		res = (*str - 48) + (res * 10);
-		str++;
+		if (res / 10 != prev && sign == 1)
+			return (-1);
+		if (res / 10 != prev && sign == -1)
+			return (0);
+			str++;
 	}
-	return ((int)res * sign);
+	return ((long)res * sign);
 }
