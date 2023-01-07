@@ -186,14 +186,14 @@ int	ft_findmoves(int count,int posa,int sizea,int sizeb)
 
 int	ft_longbtwn(int count,int posa,int sizea,int sizeb)
 {
-	if(count < sizeb / 2 && posa < sizea / 2 && count >= posa)
+	if(count <= sizeb / 2 && posa <= sizea / 2 && count >= posa)
 		return (count);
-	else if(count < sizeb / 2 && posa < sizea / 2 && count <= posa)
+	else if(count <= sizeb / 2 && posa <= sizea / 2 && count <= posa)
 		return (posa);
 	else if(count >= sizeb / 2 && posa >= sizea / 2 && sizeb - count <= sizea - posa)
-		return (sizeb - count);
-	else if(count >= sizeb / 2 && posa >= sizea / 2 && sizeb - count >= sizea - posa)
 		return (sizea - posa);
+	else if(count >= sizeb / 2 && posa >= sizea / 2 && sizeb - count >= sizea - posa)
+		return (sizeb - count);
 	else if(count <= sizeb / 2 && posa >= sizea / 2)
 		return (count + (sizea - posa));
 	else if(count >= sizeb / 2 && posa <= sizea / 2)
@@ -358,6 +358,7 @@ void findshortway(t_list **stack, t_list **b,int sizea,int sizeb)
 	{
 		posa = ft_findposinstacka(stack,tmp->num);
 		moves = ft_longbtwn(count,posa,sizea,sizeb);
+		//printf("num is == %d || posa == %d || count == %d  || moves == %d\n",tmp->num,posa,count,moves);
 		if(minmoves == 2147483647)
 		{
 			num = tmp->num;
@@ -426,7 +427,7 @@ void ft_mintomoon(t_list **stack,int count,int size)
 	{
 		while(count-- > 0)
 		{
-			rrotate(stack);
+			rotate(stack);
 			ft_putendl_fd("ra",1);
 		}
 	}
@@ -456,12 +457,12 @@ void ft_mintotop(t_list **stack,int size)
 void ft_longsort(t_list **stack, t_list **b)
 {
 	t_list *tmp;
-	int size = ft_lstsize(*stack);
 	tmp = *stack;
 	int min;
 	ft_findlis(stack);
 	ft_push0marktob(stack,b,ft_lstsize(*stack));
 	ft_push0marktoa(stack,b);
+	int size = ft_lstsize(*stack);
 	ft_mintotop(stack,size);
 	
 }
