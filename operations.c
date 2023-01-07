@@ -43,9 +43,18 @@ void rrotate(t_list **stack)
 	t_list *head;
 	t_list *last;
 	t_list *tmp;
-	if(ft_lstsize(*stack) == 2)
+
+	int size = 0;
+	if(stack)
+		size = ft_lstsize(*stack);
+	if(size == 0)
+		return ;
+	if(size == 2)
+	{
 		swap(stack);
-	if(ft_lstsize(*stack) > 2)
+		return;
+	}
+	if(size  > 2)
 	{
 		tmp = *stack;
 		head = *stack;
@@ -65,11 +74,16 @@ void rotate(t_list **stack)
 	t_list *tail;
 	size_t	size;
 
-	size = ft_lstsize(*stack);
+	size = 0;
+	if(stack)
+		size = ft_lstsize(*stack);
 	if(size == 0)
 		return ;
 	if(size == 2)
+	{
 		swap(stack);
+		return;
+	}
 	else  if (size == 1)
 		return;
 	tail = ft_lstlast(*stack);
