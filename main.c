@@ -1,6 +1,99 @@
 #include "push_swap.h"
 
 
+t_list	*max_of_length(t_list **stack,int size,int *tab1,int *tab2)
+{
+	int		max;
+	t_list	*tmp_stack;
+	t_list	*max_elem;
+
+	tmp_stack = *stack;
+	int i = 0;
+	max = 0;
+	while (size--)
+	{
+		if (tab1[i] > max)
+		{
+			max = tab1[i];
+			max_elem = tmp_stack;
+		}
+		tmp_stack = tmp_stack->next;
+		i++;
+	}
+	return (max_elem);
+}
+
+// t_list	*find_elem_by_index(t_list **stack, int index)
+// {
+// 	t_list	*tmp_stack;
+
+// 	tmp_stack = *stack;
+// 	while (tmp_stack)
+// 	{
+// 		if (tmp_stack->index == index)
+// 			return (tmp_stack);
+// 		tmp_stack = tmp_stack->next;
+// 	}
+// 	return (NULL);
+// }
+
+// void	get_lis(t_list **stack)
+// {
+// 	t_list	*tmp_stack;
+// 	int		index;
+
+// 	tmp_stack = max_of_length(stack);
+// 	tmp_stack->lis = 1;
+// 	index = tmp_stack->prev;
+// 	while (index != -1)
+// 	{
+// 		tmp_stack = find_elem_by_index(stack, index);
+// 		tmp_stack->lis = 1;
+// 		index = tmp_stack->prev;
+// 	}
+// }
+
+void	find_lis(t_list **stack,int size)
+{
+	t_list	*tmp_i;
+	t_list	*tmp_j;
+	int i = 0;
+	int j = 0;
+	int *tab1 =  malloc(sizeof(int)*size);
+	int k = 0;
+	t_list *tmp = *stack;
+	int min = 1;
+	while(tmp->num!=	1)
+		tmp = tmp->next;
+	while(k++ < size)
+		tab1[k] = 0;
+	k = 0;
+	int *tab2 = malloc(sizeof(int)*size);
+
+	tmp_i = (*stack)->next;
+	while (tmp_i != NULL)
+	{
+		j = 0;
+		tmp_j = *stack;
+		while (tmp_j != tmp_i)
+		{
+			if (tmp_i->num > tmp_j->num)
+			{
+				tab1[i]= ft_max(tab1[i], tab1[j] + 1);
+				if (tab2[i] <= tab2[j] + 1)
+					tab2[i] = j;
+			}
+			tmp_j = tmp_j->next;
+			j++;
+		}
+		tmp_i = tmp_i->next;
+		i++;
+	}
+	while(k ++ <size)
+		printf("tab1[%d] = %d  || tab2[%d] == %d \n",k,tab1[k],k,tab2[k]);
+}
+
+
 void ft_printlist(t_list *stack)
 {
 	t_list *tmp;
@@ -91,10 +184,12 @@ void ft_findlis(t_list **stack)
 	t_list *tail;
 	t_list *head;
 	t_list *tmphead;
+	int size = ft_lstsize(*stack);
 
 	head = *stack;
 	tail = ft_lstlast(*stack);
 	tail->next = head;
+	find_lis(stack,size);
 	tmphead = head->next;
 	ft_findlis2(&head);
 	while(tmphead != head)
