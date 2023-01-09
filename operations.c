@@ -1,60 +1,72 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   operations.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mlektaib <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/09 13:56:47 by mlektaib          #+#    #+#             */
+/*   Updated: 2023/01/09 13:56:48 by mlektaib         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-void swap(t_list **stack)
+void	swap(t_list **stack)
 {
-	t_list *head;
-	t_list *tmp;
-	t_list *tmpnxt;
+	t_list	*head;
+	t_list	*tmp;
+	t_list	*tmpnxt;
 
 	head = *stack;
 	if (!head)
 		return ;
 	tmp = head->next;
 	if (!tmp)
-		return;
+		return ;
 	tmpnxt = tmp->next;
 	*stack = tmp;
 	tmp->next = head;
 	head->next = tmpnxt;
 }
 
-void push(t_list **a, t_list **b)
+void	push(t_list **a, t_list **b)
 {
-	t_list *tmpb;
-	t_list *tmp;
+	t_list	*tmpb;
+	t_list	*tmp;
 	size_t	size;
 
 	size = ft_lstsize(*b);
 	tmpb = *b;
 	if (size == 0)
-		return;
+		return ;
 	if (size == 1)
 	{
-		ft_lstadd_front(a,tmpb);
+		ft_lstadd_front(a, tmpb);
 		*b = NULL;
-		return;
+		return ;
 	}
 	*b = tmpb->next;
-	ft_lstadd_front(a,tmpb);
+	ft_lstadd_front(a, tmpb);
 }
 
-void rrotate(t_list **stack)
+void	rrotate(t_list **stack)
 {
-	t_list *head;
-	t_list *last;
-	t_list *tmp;
+	t_list	*head;
+	t_list	*last;
+	t_list	*tmp;
+	int		size;
 
-	int size = 0;
-	if(stack)
+	if (stack)
 		size = ft_lstsize(*stack);
-	if(size == 0)
+	if (size == 0)
 		return ;
-	if(size == 2)
+	if (size == 2)
 	{
 		swap(stack);
-		return;
+		return ;
 	}
-	if(size  > 2)
+	if (size > 2)
 	{
 		tmp = *stack;
 		head = *stack;
@@ -65,27 +77,26 @@ void rrotate(t_list **stack)
 		tmp->next = NULL;
 		*stack = last;
 	}
-	
 }
 
-void rotate(t_list **stack)
+void	rotate(t_list **stack)
 {
-	t_list *head;
-	t_list *tail;
+	t_list	*head;
+	t_list	*tail;
 	size_t	size;
 
 	size = 0;
-	if(stack)
+	if (stack)
 		size = ft_lstsize(*stack);
-	if(size == 0)
+	if (size == 0)
 		return ;
-	if(size == 2)
+	if (size == 2)
 	{
 		swap(stack);
-		return;
+		return ;
 	}
-	else  if (size == 1)
-		return;
+	else if (size == 1)
+		return ;
 	tail = ft_lstlast(*stack);
 	head = *stack;
 	*stack = head->next;
