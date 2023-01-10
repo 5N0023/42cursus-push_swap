@@ -1,38 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils5.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlektaib <mlektaib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/09 12:22:13 by mlektaib          #+#    #+#             */
-/*   Updated: 2023/01/10 19:36:28 by mlektaib         ###   ########.fr       */
+/*   Created: 2023/01/10 20:12:51 by mlektaib          #+#    #+#             */
+/*   Updated: 2023/01/10 20:14:04 by mlektaib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int a, char **arg)
+int	ft_isdigit(int n)
 {
-	t_list	*stack;
-	t_list	*tmp;
-	t_list	*b;
-	int		size;
+	return (n >= '0' && n <= '9');
+}
 
-	if (a == 1)
-		return (0);
-	b = NULL;
-	if (!ft_createstack(arg, &stack))
-	{
-		ft_putendl_fd("Error", 1);
-		ft_lstclear(&stack, free);
-		exit (1);
-	}
-	size = ft_lstsize(stack);
-	if (size > 10)
-		ft_longsort(&stack, &b, size);
-	else
-		ft_shortsort(&stack, &b, size);
-	ft_lstclear(&stack, free);
-	return (0);
-}	
+size_t	ft_strlen(const char *str)
+{
+	size_t	count;
+
+	count = 0;
+	while (str[count])
+		count++;
+	return (count);
+}
