@@ -6,7 +6,7 @@
 #    By: mlektaib <mlektaib@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/10 19:19:32 by mlektaib          #+#    #+#              #
-#    Updated: 2023/01/11 17:18:14 by mlektaib         ###   ########.fr        #
+#    Updated: 2023/01/11 17:32:12 by mlektaib         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,32 +25,40 @@ SRCS =	main.c 				\
 		./srcs/utils4.c 			\
 		./srcs/utils5.c 			\
 
-SRCB = checker.c 				\
-		./srcs/operations.c 		\
-		./srcs/parsing.c			\
-		./srcs/utils1.c 			\
-		./srcs/utils2.c 			\
-		./srcs/utils3.c 			\
-		./srcs/utils4.c 			\
+SRCSB =  checker_bonus.c 				\
+		bonus/operations_bonus.c	\
+		bonus/parsing_bonus.c		\
+		bonus/utils1_bonus.c			\
+		bonus/utils2_bonus.c			\
+		bonus/utils3_bonus.c			\
+		bonus/utils4_bonus.c			\
+		bonus/utils5_bonus.c			\
 
-BONUS =checker
+BONUS = checker_bonus
 NAME = push_swap
 
 OBJS = $(SRCS:.c=.o)
+
+OBJSB = $(SRCSB:.c=.o)
 
 CC_FLAGS = -Wall -Wextra -Werror
 
 %.o : %.c
 	cc -c $< -o $@
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) srcs/push_swap.h
 	cc  $(OBJS) -o $(NAME)
+
+$(BONUS): $(OBJSB) bonus/push_swap_bonus.h
+	cc  $(OBJSB) -o $(BONUS)
+
 
 all: $(NAME)
 
+bonus : $(BONUS)
 
 clean:
-	rm -rf $(OBJS)
+	rm -rf $(OBJS) $(OBJSB)
 
 fclean: clean
 	rm -f $(NAME)
