@@ -6,7 +6,7 @@
 /*   By: mlektaib <mlektaib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 19:19:03 by mlektaib          #+#    #+#             */
-/*   Updated: 2023/01/10 19:26:04 by mlektaib         ###   ########.fr       */
+/*   Updated: 2023/01/11 17:17:57 by mlektaib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ void	ft_sort2number(t_list **stack)
 
 void	ft_sort3number(t_list **stack, int size)
 {
+	if (size == 1)
+		return;
 	if (size == 2)
 		ft_sort2number(stack);
 	else

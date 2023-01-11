@@ -6,7 +6,7 @@
 #    By: mlektaib <mlektaib@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/10 19:19:32 by mlektaib          #+#    #+#              #
-#    Updated: 2023/01/10 20:43:03 by mlektaib         ###   ########.fr        #
+#    Updated: 2023/01/11 17:18:14 by mlektaib         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,8 +40,8 @@ OBJS = $(SRCS:.c=.o)
 
 CC_FLAGS = -Wall -Wextra -Werror
 
-%.o : %.c push_swap.h
-	cc -c $< -o
+%.o : %.c
+	cc -c $< -o $@
 
 $(NAME): $(OBJS)
 	cc  $(OBJS) -o $(NAME)
