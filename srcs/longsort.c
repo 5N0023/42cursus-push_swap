@@ -6,7 +6,7 @@
 /*   By: mlektaib <mlektaib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 19:19:51 by mlektaib          #+#    #+#             */
-/*   Updated: 2023/01/10 19:36:01 by mlektaib         ###   ########.fr       */
+/*   Updated: 2023/01/11 20:27:27 by mlektaib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,6 @@ void	ft_push0marktoa(t_list **stack, t_list **b)
 void	ft_longsort(t_list **stack, t_list **b, int size)
 {
 	t_list	*tmp;
-	int		min;
 
 	tmp = *stack;
 	findlis(stack, size);

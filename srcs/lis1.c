@@ -6,7 +6,7 @@
 /*   By: mlektaib <mlektaib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 19:20:31 by mlektaib          #+#    #+#             */
-/*   Updated: 2023/01/10 19:53:00 by mlektaib         ###   ########.fr       */
+/*   Updated: 2023/01/11 20:27:13 by mlektaib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void	ft_getnumbers(t_list **stack, int *tab, t_vars2 *tables, int size)
 
 void	lis(t_list **stack,	int *tab, t_vars2 *tables, int size)
 {
-	int	k;
 	int	i;
 	int	j;
 

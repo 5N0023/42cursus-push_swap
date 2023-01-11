@@ -6,7 +6,7 @@
 #    By: mlektaib <mlektaib@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/10 19:19:32 by mlektaib          #+#    #+#              #
-#    Updated: 2023/01/11 18:28:16 by mlektaib         ###   ########.fr        #
+#    Updated: 2023/01/11 20:24:43 by mlektaib         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,7 @@ OBJSB = $(SRCSB:.c=.o)
 CC_FLAGS = -Wall -Wextra -Werror
 
 %.o : %.c
-	cc -c $< -o $@
+	cc $(CC_FLAGS) -c $< -o $@
 
 $(NAME): $(OBJS) srcs/push_swap.h
 	cc  $(OBJS) -o $(NAME)

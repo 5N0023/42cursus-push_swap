@@ -6,7 +6,7 @@
 /*   By: mlektaib <mlektaib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 12:22:13 by mlektaib          #+#    #+#             */
-/*   Updated: 2023/01/11 18:28:02 by mlektaib         ###   ########.fr       */
+/*   Updated: 2023/01/11 20:24:55 by mlektaib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ int	ft_checkifsorted(t_list **stack)
 int	main(int a, char **arg)
 {
 	t_list	*stack;
-	t_list	*tmp;
 	t_list	*b;
 	int		size;
 

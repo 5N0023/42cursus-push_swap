@@ -6,7 +6,7 @@
 /*   By: mlektaib <mlektaib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 13:56:47 by mlektaib          #+#    #+#             */
-/*   Updated: 2023/01/10 19:19:27 by mlektaib         ###   ########.fr       */
+/*   Updated: 2023/01/11 20:31:29 by mlektaib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void	swap(t_list **stack)
 void	push(t_list **a, t_list **b)
 {
 	t_list	*tmpb;
-	t_list	*tmp;
 	size_t	size;
 
 	size = ft_lstsize(*b);
@@ -50,6 +49,13 @@ void	push(t_list **a, t_list **b)
 	ft_lstadd_front(a, tmpb);
 }
 
+t_list	*beforelast(t_list *tmp, t_list *last)
+{
+	while (tmp->next != last)
+			tmp = tmp->next;
+	return (tmp);
+}
+
 void	rrotate(t_list **stack)
 {
 	t_list	*head;
@@ -57,6 +63,7 @@ void	rrotate(t_list **stack)
 	t_list	*tmp;
 	int		size;
 
+	size = 0;
 	if (stack)
 		size = ft_lstsize(*stack);
 	if (size == 0)
@@ -71,8 +78,7 @@ void	rrotate(t_list **stack)
 		tmp = *stack;
 		head = *stack;
 		last = ft_lstlast(*stack);
-		while (tmp->next != last)
-			tmp = tmp->next;
+		tmp = beforelast(tmp, last);
 		last->next = head;
 		tmp->next = NULL;
 		*stack = last;
