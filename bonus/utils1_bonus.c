@@ -6,7 +6,7 @@
 /*   By: mlektaib <mlektaib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 19:18:48 by mlektaib          #+#    #+#             */
-/*   Updated: 2023/01/10 20:45:02 by mlektaib         ###   ########.fr       */
+/*   Updated: 2023/01/11 18:26:03 by mlektaib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ long	ft_atoi(const char *str)
 {
 	size_t	res;
 	int		sign;
-	size_t	prev;
+	long	prev;
 
 	sign = 1;
 	res = 0;
@@ -38,11 +38,11 @@ long	ft_atoi(const char *str)
 	{
 		prev = res;
 		res = (*str - 48) + (res * 10);
-		if (res / 10 != prev && sign == 1)
-			return (-1);
-		if (res / 10 != prev && sign == -1)
-			return (0);
-			str++;
+		if (res / 10 != prev || (sign == 1 && res > 2147483647))
+			return (9999999999);
+		else if (res / 10 != prev || (sign == -1 && res > 2147483648))
+			return (9999999999);
+		str++;
 	}
 	return ((long)res * sign);
 }

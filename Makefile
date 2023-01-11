@@ -6,7 +6,7 @@
 #    By: mlektaib <mlektaib@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/10 19:19:32 by mlektaib          #+#    #+#              #
-#    Updated: 2023/01/11 17:34:08 by mlektaib         ###   ########.fr        #
+#    Updated: 2023/01/11 18:28:16 by mlektaib         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ SRCSB =  checker_bonus.c 				\
 		bonus/utils4_bonus.c			\
 		bonus/utils5_bonus.c			\
 
-BONUS = checker_bonus
+BONUS = checker
 NAME = push_swap
 
 OBJS = $(SRCS:.c=.o)

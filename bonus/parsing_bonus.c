@@ -6,7 +6,7 @@
 /*   By: mlektaib <mlektaib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 19:19:18 by mlektaib          #+#    #+#             */
-/*   Updated: 2023/01/11 16:48:54 by mlektaib         ###   ########.fr       */
+/*   Updated: 2023/01/11 18:39:18 by mlektaib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int	ft_checkformat(char *num)
 		num++;
 	else if (!ft_isdigit(*num))
 		return (0);
+	if (!ft_isdigit(*num))
+		return (0);
 	while (*num)
 	{
 		if (!ft_isdigit(*num))
@@ -27,11 +29,13 @@ int	ft_checkformat(char *num)
 	return (1);
 }
 
-int	ft_checkduplicate(t_list **head, int num)
+int	ft_checkduplicate(t_list **head, long num)
 {
 	t_list	*tmp;
 
 	tmp = *head;
+	if (num == 9999999999)
+		return (1);
 	while (tmp)
 	{
 		if (num == tmp->num)

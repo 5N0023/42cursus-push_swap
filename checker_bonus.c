@@ -6,7 +6,7 @@
 /*   By: mlektaib <mlektaib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 12:22:13 by mlektaib          #+#    #+#             */
-/*   Updated: 2023/01/10 21:04:10 by mlektaib         ###   ########.fr       */
+/*   Updated: 2023/01/11 18:28:30 by mlektaib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ int	main(int a, char **arg)
 	int		size;
 	t_list	*b;
 
+	b = NULL;
 	if (a == 1)
 		return (0);
-	b = NULL;
 	if (!ft_createstack(arg, &stack) || ft_useoper(&stack, &b) == -1)
 	{
-		ft_putendl_fd("Error", 1);
+		ft_putendl_fd("Error", 2);
 		ft_lstclear(&stack, free);
 		exit (1);
 	}
