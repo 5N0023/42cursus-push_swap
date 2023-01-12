@@ -6,7 +6,7 @@
 #    By: mlektaib <mlektaib@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/10 19:19:32 by mlektaib          #+#    #+#              #
-#    Updated: 2023/01/12 14:29:03 by mlektaib         ###   ########.fr        #
+#    Updated: 2023/01/12 18:59:28 by mlektaib         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,17 +45,18 @@ OBJSB = $(SRCSB:.c=.o)
 
 CC_FLAGS = -Wall -Wextra -Werror
 
-%.o : %.c $(MH) $(BH)
-	@cc $(CC_FLAGS) -c $< -o $@
-
 $(NAME): $(OBJS) $(MH)
 	@cc  $(OBJS) -o $(NAME)
+	
+%.o : %.c $(MH)
+	@cc $(CC_FLAGS) -c $< -o $@
+
 
 $(BONUS): $(OBJSB) $(BH)
 	@cc  $(OBJSB) -o $(BONUS)
 
 
-all: $(NAME)
+all: $(NAME) $(BONUS)
 
 bonus : $(BONUS)
 
