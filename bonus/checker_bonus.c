@@ -1,56 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   checker_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlektaib <mlektaib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 12:22:13 by mlektaib          #+#    #+#             */
-/*   Updated: 2023/01/11 20:24:55 by mlektaib         ###   ########.fr       */
+/*   Updated: 2023/01/12 16:06:53 by mlektaib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./srcs/push_swap.h"
-
-int	ft_checkifsorted(t_list **stack)
-{
-	t_list	*tmp;
-	int		prev;
-
-	tmp = *stack;
-	prev = tmp->num;
-	while (tmp)
-	{
-		if (prev > tmp->num)
-			return (0);
-		prev = tmp->num;
-		tmp = tmp->next;
-	}
-	return (1);
-}
+#include "push_swap_bonus.h"
 
 int	main(int a, char **arg)
 {
 	t_list	*stack;
-	t_list	*b;
 	int		size;
+	t_list	*b;
 
+	size = 0;
 	b = NULL;
 	if (a == 1)
 		return (0);
-	if (!ft_createstack(arg, &stack))
+	if (!ft_createstack(arg, &stack) || ft_useoper(&stack, &b) == -1)
 	{
 		ft_putendl_fd("Error", 2);
 		ft_lstclear(&stack, free);
-		return (1);
+		exit (1);
 	}
 	if (ft_checkifsorted(&stack))
-		return (0);
-	size = ft_lstsize(stack);
-	if (size > 10)
-		ft_longsort(&stack, &b, size);
+		ft_putendl_fd("OK", 1);
 	else
-		ft_shortsort(&stack, &b, size);
+		ft_putendl_fd("KO", 1);
 	ft_lstclear(&stack, free);
 	return (0);
 }	

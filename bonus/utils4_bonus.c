@@ -6,7 +6,7 @@
 /*   By: mlektaib <mlektaib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 20:12:51 by mlektaib          #+#    #+#             */
-/*   Updated: 2023/01/11 17:30:51 by mlektaib         ###   ########.fr       */
+/*   Updated: 2023/01/12 16:30:13 by mlektaib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_doublerrotate(t_list **stack, t_list **b)
 	rrotate(b);
 }
 
-void	ft_appop(t_list **stack, t_list **b, char *tab, int i)
+int	ft_appop(t_list **stack, t_list **b, char *tab, int i)
 {
 	if (!ft_strncmp(tab, "rrr", i) && i == 3)
 		ft_doublerrotate(stack, b);
@@ -44,8 +44,11 @@ void	ft_appop(t_list **stack, t_list **b, char *tab, int i)
 		rotate(stack);
 	else if (!ft_strncmp(tab, "rb", i) && i == 2)
 		rotate(b);
-	else if (!ft_strncmp(tab, "rr", i) && i == 2)
+	else if (!ft_strncmp(tab, "rr", i))
 		ft_doublerotate(stack, b);
+	else
+		return (0);
+	return (1);
 }
 
 int	ft_useoper(t_list **stack, t_list **b)
@@ -63,8 +66,11 @@ int	ft_useoper(t_list **stack, t_list **b)
 		{
 			i++;
 			k = read(0, &tab[i], 1);
-		}	
-		ft_appop(stack, b, tab, i);
+		}
+		if (tab[0] == '\n')
+			return (-1);
+		if (!ft_appop(stack, b, tab, i))
+			return (-1);
 		i = 0;
 	}
 	return (k);
