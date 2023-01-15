@@ -6,7 +6,7 @@
 /*   By: mlektaib <mlektaib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 12:22:13 by mlektaib          #+#    #+#             */
-/*   Updated: 2023/01/12 18:43:52 by mlektaib         ###   ########.fr       */
+/*   Updated: 2023/01/15 15:23:52 by mlektaib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	main(int a, char **arg)
 	{
 		ft_putendl_fd("Error", 2);
 		ft_lstclear(&stack, free);
+		ft_lstclear(&b, free);
 		exit (1);
 	}
 	if (ft_checkifsorted(&stack) && b == NULL)
@@ -33,5 +34,6 @@ int	main(int a, char **arg)
 	else if ((!ft_checkifsorted(&stack) || b))
 		ft_putendl_fd("KO", 1);
 	ft_lstclear(&stack, free);
+	ft_lstclear(&b, free);
 	return (0);
 }	
